@@ -27,6 +27,37 @@
         .header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
         .header p { color: #a0a0a0; }
         
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #fff;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+        
+        .filter-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+        
+        .filter-btn.active {
+            opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+        
         .summary {
             display: flex;
             flex-wrap: wrap;
@@ -50,6 +81,11 @@
             border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .stock-card.hidden {
+            display: none;
         }
         
         .stock-header {
@@ -137,7 +173,12 @@
     <div class="container">
         <div class="header">
             <h1>📊 26檔產業龍頭深度分析報告</h1>
-            <p>更新時間: 2026-04-28 15:55</p>
+            <p>更新時間: 2026-04-28 16:26</p>
+        </div>
+        
+        <div class="filter-section">
+            <button class="filter-btn active" data-filter="all" style="background: #58a6ff;">全部 (26)</button>
+            <button class="filter-btn" data-filter="🟢建議持有" style="background: #3FB950;">🟢建議持有 (2)</button><button class="filter-btn" data-filter="🔵成長潛力" style="background: #58A6FF;">🔵成長潛力 (1)</button><button class="filter-btn" data-filter="🟡觀望" style="background: #D29922;">🟡觀望 (8)</button><button class="filter-btn" data-filter="🟠留意" style="background: #F0883E;">🟠留意 (9)</button><button class="filter-btn" data-filter="🔴風險" style="background: #F85149;">🔴風險 (6)</button>
         </div>
         
         <div class="summary">
@@ -163,9 +204,10 @@
             </div>
         </div>
 
+        <div class="rating-section" data-rating="🟢建議持有">
         <h2 style="color: #3FB950; margin: 2rem 0 1rem;">🟢建議持有</h2>
 
-    <div class="stock-card" id="2330">
+    <div class="stock-card" data-rating="🟢建議持有">
         <div class="stock-header">
             <span class="stock-code">2330</span>
             <span class="stock-name">台積電</span>
@@ -207,7 +249,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2313">
+    <div class="stock-card" data-rating="🟢建議持有">
         <div class="stock-header">
             <span class="stock-code">2313</span>
             <span class="stock-name">華通</span>
@@ -248,10 +290,12 @@
             </div>
         </div>
     </div>
-    
+            </div>
+
+        <div class="rating-section" data-rating="🔵成長潛力">
         <h2 style="color: #58A6FF; margin: 2rem 0 1rem;">🔵成長潛力</h2>
 
-    <div class="stock-card" id="2347">
+    <div class="stock-card" data-rating="🔵成長潛力">
         <div class="stock-header">
             <span class="stock-code">2347</span>
             <span class="stock-name">智邦</span>
@@ -292,10 +336,12 @@
             </div>
         </div>
     </div>
-    
+            </div>
+
+        <div class="rating-section" data-rating="🟡觀望">
         <h2 style="color: #D29922; margin: 2rem 0 1rem;">🟡觀望</h2>
 
-    <div class="stock-card" id="3008">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">3008</span>
             <span class="stock-name">大立光</span>
@@ -337,7 +383,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1216">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">1216</span>
             <span class="stock-name">統一</span>
@@ -379,7 +425,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2618">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">2618</span>
             <span class="stock-name">長榮航</span>
@@ -421,7 +467,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1476">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">1476</span>
             <span class="stock-name">儒鴻</span>
@@ -463,7 +509,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1229">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">1229</span>
             <span class="stock-name">聯華</span>
@@ -505,7 +551,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="3054">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">3054</span>
             <span class="stock-name">安國</span>
@@ -547,7 +593,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2344">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">2344</span>
             <span class="stock-name">華邦電</span>
@@ -589,7 +635,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="3532">
+    <div class="stock-card" data-rating="🟡觀望">
         <div class="stock-header">
             <span class="stock-code">3532</span>
             <span class="stock-name">台勝科</span>
@@ -630,10 +676,12 @@
             </div>
         </div>
     </div>
-    
+            </div>
+
+        <div class="rating-section" data-rating="🟠留意">
         <h2 style="color: #F0883E; margin: 2rem 0 1rem;">🟠留意</h2>
 
-    <div class="stock-card" id="2317">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">2317</span>
             <span class="stock-name">鴻海</span>
@@ -675,7 +723,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="9921">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">9921</span>
             <span class="stock-name">巨大</span>
@@ -717,7 +765,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2886">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">2886</span>
             <span class="stock-name">兆豐金</span>
@@ -759,7 +807,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2412">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">2412</span>
             <span class="stock-name">中華電</span>
@@ -801,7 +849,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1102">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">1102</span>
             <span class="stock-name">亞泥</span>
@@ -843,7 +891,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="5880">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">5880</span>
             <span class="stock-name">街口</span>
@@ -885,7 +933,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2495">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">2495</span>
             <span class="stock-name">普安</span>
@@ -927,7 +975,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2408">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">2408</span>
             <span class="stock-name">南亞科</span>
@@ -969,7 +1017,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="8299">
+    <div class="stock-card" data-rating="🟠留意">
         <div class="stock-header">
             <span class="stock-code">8299</span>
             <span class="stock-name">群聯</span>
@@ -1010,10 +1058,12 @@
             </div>
         </div>
     </div>
-    
+            </div>
+
+        <div class="rating-section" data-rating="🔴風險">
         <h2 style="color: #F85149; margin: 2rem 0 1rem;">🔴風險</h2>
 
-    <div class="stock-card" id="2207">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">2207</span>
             <span class="stock-name">和泰車</span>
@@ -1055,7 +1105,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2002">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">2002</span>
             <span class="stock-name">中鋼</span>
@@ -1097,7 +1147,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1301">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">1301</span>
             <span class="stock-name">台塑</span>
@@ -1139,7 +1189,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="4743">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">4743</span>
             <span class="stock-name">合一</span>
@@ -1181,7 +1231,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="2734">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">2734</span>
             <span class="stock-name">晶華</span>
@@ -1223,7 +1273,7 @@
         </div>
     </div>
     
-    <div class="stock-card" id="1909">
+    <div class="stock-card" data-rating="🔴風險">
         <div class="stock-header">
             <span class="stock-code">1909</span>
             <span class="stock-name">永豐餘</span>
@@ -1264,10 +1314,55 @@
             </div>
         </div>
     </div>
-    
+            </div>
+
         <div class="footer">
             <p>本報告僅供參考，不構成投資建議。投資有風險，請審慎評估。</p>
         </div>
     </div>
+    
+    <script>
+        // 評等過濾功能
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const stockCards = document.querySelectorAll('.stock-card');
+        const ratingSections = document.querySelectorAll('.rating-section');
+        
+        filterBtns.forEach(btn => {{
+            btn.addEventListener('click', () => {{
+                // 移除所有 active
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // 添加 active 到點擊的按鈕
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                // 過濾股票卡片
+                stockCards.forEach(card => {{
+                    if (filter === 'all') {{
+                        card.classList.remove('hidden');
+                    }} else {{
+                        if (card.dataset.rating === filter) {{
+                            card.classList.remove('hidden');
+                        }} else {{
+                            card.classList.add('hidden');
+                        }}
+                    }}
+                }});
+                
+                // 過濾評等區塊
+                ratingSections.forEach(section => {{
+                    if (filter === 'all') {{
+                        section.style.display = 'block';
+                    }} else {{
+                        if (section.dataset.rating === filter) {{
+                            section.style.display = 'block';
+                        }} else {{
+                            section.style.display = 'none';
+                        }}
+                    }}
+                }});
+            }});
+        }});
+    </script>
 </body>
 </html>
