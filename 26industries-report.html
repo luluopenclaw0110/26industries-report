@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>26檔產業龍頭深度分析報告</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -19,10 +15,7 @@
             padding: 2rem;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
         
         .header {
             text-align: center;
@@ -31,15 +24,8 @@
             margin-bottom: 2rem;
         }
         
-        .header h1 {
-            font-size: 2.5rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-        
-        .header p {
-            color: #a0a0a0;
-        }
+        .header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
+        .header p { color: #a0a0a0; }
         
         .summary {
             display: flex;
@@ -56,10 +42,7 @@
             text-align: center;
         }
         
-        .summary-card .count {
-            font-size: 2rem;
-            font-weight: bold;
-        }
+        .summary-card .count { font-size: 2rem; font-weight: bold; }
         
         .stock-card {
             background: rgba(255,255,255,0.03);
@@ -67,14 +50,13 @@
             border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
         }
         
         .stock-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -99,20 +81,28 @@
             color: #fff;
         }
         
-        .stock-section {
-            margin-bottom: 1.5rem;
+        .price-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
         }
         
-        .stock-section h3 {
-            color: #58a6ff;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+        .price { font-size: 1.5rem; font-weight: bold; color: #fff; }
+        .change { font-size: 1rem; }
+        
+        .indicators {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 0.25rem;
         }
         
-        .stock-section p {
-            color: #c0c0c0;
-            line-height: 1.6;
-        }
+        .stock-section { margin-bottom: 1.5rem; }
+        .stock-section h3 { color: #58a6ff; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .stock-section p { color: #c0c0c0; line-height: 1.6; }
         
         .strengths-risks {
             display: grid;
@@ -126,17 +116,12 @@
             border-radius: 8px;
         }
         
-        .strengths h4, .risks h4 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .strengths h4 {color: #3fb950;}
-        .risks h4 {color: #f85149;}
+        .strengths h4, .risks h4 { margin-bottom: 0.5rem; }
+        .strengths h4 { color: #3fb950; }
+        .risks h4 { color: #f85149; }
         
         @media (max-width: 768px) {
-            .strengths-risks {
-                grid-template-columns: 1fr;
-            }
+            .strengths-risks { grid-template-columns: 1fr; }
         }
         
         .footer {
@@ -152,7 +137,7 @@
     <div class="container">
         <div class="header">
             <h1>📊 26檔產業龍頭深度分析報告</h1>
-            <p>更新時間: 2026-04-28 13:28</p>
+            <p>更新時間: 2026-04-28 15:25</p>
         </div>
         
         <div class="summary">
@@ -186,6 +171,7 @@
             <span class="stock-name">台積電</span>
             <span class="rating-badge" style="background: #3FB950;">🟢建議持有</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -223,6 +209,7 @@
             <span class="stock-name">華通</span>
             <span class="rating-badge" style="background: #3FB950;">🟢建議持有</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -262,6 +249,7 @@
             <span class="stock-name">智邦</span>
             <span class="rating-badge" style="background: #0066CC;">🔵成長潛力</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -301,6 +289,7 @@
             <span class="stock-name">大立光</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -338,6 +327,7 @@
             <span class="stock-name">統一</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -375,6 +365,7 @@
             <span class="stock-name">長榮航</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -412,6 +403,7 @@
             <span class="stock-name">儒鴻</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -449,6 +441,7 @@
             <span class="stock-name">聯華</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -486,6 +479,7 @@
             <span class="stock-name">安國</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -523,6 +517,7 @@
             <span class="stock-name">華邦電</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -560,6 +555,7 @@
             <span class="stock-name">台勝科</span>
             <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -599,6 +595,7 @@
             <span class="stock-name">鴻海</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -636,6 +633,7 @@
             <span class="stock-name">巨大</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -673,6 +671,7 @@
             <span class="stock-name">兆豐金</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -710,6 +709,7 @@
             <span class="stock-name">中華電</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -747,6 +747,7 @@
             <span class="stock-name">亞泥</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -784,6 +785,7 @@
             <span class="stock-name">街口</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -821,6 +823,7 @@
             <span class="stock-name">普安</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -858,6 +861,7 @@
             <span class="stock-name">南亞科</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -895,6 +899,7 @@
             <span class="stock-name">群聯</span>
             <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -934,6 +939,7 @@
             <span class="stock-name">和泰車</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -971,6 +977,7 @@
             <span class="stock-name">中鋼</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -1008,6 +1015,7 @@
             <span class="stock-name">台塑</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -1045,6 +1053,7 @@
             <span class="stock-name">合一</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -1082,6 +1091,7 @@
             <span class="stock-name">晶華</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
@@ -1119,6 +1129,7 @@
             <span class="stock-name">永豐餘</span>
             <span class="rating-badge" style="background: #F85149;">🔴風險</span>
         </div>
+        <div class="price-info"><span class="price">無股價資料</span></div>
         
         <div class="stock-section">
             <h3>📊 產業分析</h3>
