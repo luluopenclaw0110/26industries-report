@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26檔產業龍頭股票評估報告</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { 
+            text-align: center; 
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #00cc96, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .update-time { text-align: center; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+        .filters { 
+            display: flex; 
+            gap: 10px; 
+            justify-content: center; 
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .filter-btn:hover { transform: translateY(-2px); }
+        .filter-btn.active { background: linear-gradient(90deg, #00cc96, #0099ff); }
+        .rating-green { border: 2px solid #3fb950; }
+        .rating-blue { border: 2px solid #58a6ff; }
+        .rating-yellow { border: 2px solid #d29922; }
+        .rating-orange { border: 2px solid #f0883e; }
+        .rating-red { border: 2px solid #f85149; }
+        .stock-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .stock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .stock-name { font-size: 1.3rem; font-weight: bold; }
+        .stock-code { color: rgba(255,255,255,0.5); margin-left: 10px; }
+        .stock-price { font-size: 1.5rem; font-weight: bold; }
+        .stock-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .data-item { text-align: center; }
+        .data-label { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+        .data-value { font-size: 1.1rem; font-weight: bold; }
+        .rating-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .rating-green { background: rgba(63, 185, 80, 0.2); color: #3fb950; }
+        .rating-blue { background: rgba(88, 166, 255, 0.2); color: #58a6ff; }
+        .rating-yellow { background: rgba(210, 153, 34, 0.2); color: #d29922; }
+        .rating-orange { background: rgba(240, 136, 62, 0.2); color: #f0883e; }
+        .rating-red { background: rgba(248, 81, 73, 0.2); color: #f85149; }
+        .section { margin: 16px 0; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; }
+        .section h3 { color: #00cc96; margin-bottom: 8px; font-size: 1rem; }
+        .section p { color: rgba(255,255,255,0.8); line-height: 1.6; font-size: 0.95rem; }
+        .footer { text-align: center; padding: 20px; color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 26檔產業龍頭股票評估報告</h1>
+        <p class="update-time">更新時間: 2026-04-28</p>
+        
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterAll()">全部 (27)</button>
+            <button class="filter-btn rating-green" onclick="filterRating('🟢建議持有')">🟢建議持有 (9)</button>
+            <button class="filter-btn rating-blue" onclick="filterRating('🔵成長潛力')">🔵成長潛力 (10)</button>
+            <button class="filter-btn rating-yellow" onclick="filterRating('🟡觀望')">🟡觀望 (5)</button>
+            <button class="filter-btn rating-orange" onclick="filterRating('🟠留意')">🟠留意 (3)</button>
+            <button class="filter-btn rating-red" onclick="filterRating('🔴風險')">🔴風險 (0)</button>
+        </div>
+        
+        <div id="stocks">
+            <!-- 台積電 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2330 台積電</span><span class="stock-code">半導體</span></div>
+                    <div class="stock-price">$2,180</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">29.64</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">73.54</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">36.21%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>全球晶圓代工龍頭，先進製程技術領先，AI晶片需求強勁，護城河極深。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>體質最佳，EPS/ROE都是頂級，法人持續買超，建議長期持有。</p>
+                </div>
+            </div>
+            
+            <!-- 鴻海 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2317 鴻海</span><span class="stock-code">電子代工</span></div>
+                    <div class="stock-price">$225</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">16.80</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">13.39</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">11.25%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>AI伺服器代工龍頭，布局電動車，PEG较低，成長明確。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>PE合理，AI題材受惠，建议持有。</p>
+                </div>
+            </div>
+            
+            <!-- 智邦 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2345 智邦</span><span class="stock-code">網通</span></div>
+                    <div class="stock-price">$2,210</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">47.20</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">46.82</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">55.9%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>白牌交換器龍頭，受惠AI資料中心建置，ROE高達55%業界最高。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>ROE驚人，成長動能強勁，AI受惠股。</p>
+                </div>
+            </div>
+            
+            <!-- 晶華 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2707 晶華</span><span class="stock-code">飯店</span></div>
+                    <div class="stock-price">$170.5</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">15.0</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">11.37</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">31.6%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>飯店龍頭，旅遊復甦，受惠國境開放，ROE高達31%。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>ROE表現優異，旅遊復甦題材，適合持有。</p>
+                </div>
+            </div>
+            
+            <!-- 永豐餘 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2912 永豐餘</span><span class="stock-code">造紙</span></div>
+                    <div class="stock-price">$224.5</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">20.88</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">10.75</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">25.4%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>造紙龍頭，ROE 25%，獲利穩健，電子事業也有斬獲。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>ROE优秀，殖利率可觀，穩健投資標的。</p>
+                </div>
+            </div>
+            
+            <!-- 大立光 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">3008 大立光</span><span class="stock-code">光學</span></div>
+                    <div class="stock-price">$2,595</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">16.52</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">157.08</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">11.5%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>全球手機鏡頭龍頭，技術門檻極高，EPS高達157元。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>EPS頂級，光學龍頭，適合長期投資。</p>
+                </div>
+            </div>
+            
+            <!-- 和泰車 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">2207 和泰車</span><span class="stock-code">汽車</span></div>
+                    <div class="stock-price">$480</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">14.15</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">33.91</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">18.9%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>Toyota/Lexus代理商，台灣車市龍頭，ROE近19%。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>車市龍頭，ROE優異，適合持有。</p>
+                </div>
+            </div>
+            
+            <!-- 儒鴻 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">1476 儒鴻</span><span class="stock-code">紡織</span></div>
+                    <div class="stock-price">$336</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">16.74</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">20.07</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">18.8%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>機能布料龍頭，運動品牌訂單穩健，ROE 近19%。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>紡織獲利王，ROE表現優異。</p>
+                </div>
+            </div>
+            
+            <!-- 官田鋼 -->
+            <div class="stock-card" data-rating="🟢建議持有">
+                <div class="stock-header">
+                    <div><span class="stock-name">1707 官田鋼</span><span class="stock-code">鋼鐵</span></div>
+                    <div class="stock-price">$114</div>
+                </div>
+                <div class="stock-data">
+                    <div class="data-item"><div class="data-label">PE</div><div class="data-value">13.95</div></div>
+                    <div class="data-item"><div class="data-label">EPS</div><div class="data-value">8.17</div></div>
+                    <div class="data-item"><div class="data-label">ROE</div><div class="data-value">15%</div></div>
+                </div>
+                <span class="rating-badge rating-green">🟢建議持有</span>
+                <div class="section">
+                    <h3>📊 產業分析</h3>
+                    <p>鋼材通路商，ROE 15%，營運穩健。</p>
+                </div>
+                <div class="section">
+                    <h3>💡 投資建議</h3>
+                    <p>鋼鐵業中體質較佳，ROE表現不錯。</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            資料來源: yfinance | 數據更新: 2026-04-28
+        </div>
+    </div>
+    
+    <script>
+        function filterAll() {
+            document.querySelectorAll('.stock-card').forEach(card => card.style.display = 'block');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+        
+        function filterRating(rating) {
+            document.querySelectorAll('.stock-card').forEach(card => {
+                card.style.display = card.dataset.rating === rating ? 'block' : 'none';
+            });
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
