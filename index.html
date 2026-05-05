@@ -1,188 +1,53 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>26檔產業龍頭</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
-            padding: 2rem;
-        }
-        .container { max-width: 800px; margin: 0 auto; text-align: center; }
-        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .subtitle { color: #888; margin-bottom: 2rem; }
-        .btn {
-            display: inline-block;
-            background: #58a6ff;
-            color: #fff;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-        .btn:hover { background: #3b8bff; }
-        .stock-list { text-align: left; margin-top: 2rem; }
-        .stock-item {
-            background: rgba(255,255,255,0.05);
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .stock-item a { color: #58a6ff; text-decoration: none; }
-        .stock-item a:hover { text-decoration: underline; }
-        .rating { padding: 0.25rem 0.5rem; border-radius: 4px; color: #fff; font-size: 0.8rem; }
-    </style>
+<html>
+<head><meta charset="UTF-8"><title>26檔產業龍頭報告</title>
+<style>
+body{font-family:'Segoe UI',sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:#1a1a2e;color:#eee}
+h1{color:#00d4ff;text-align:center}
+table{width:100%;border-collapse:collapse;margin-top:20px}
+th{background:#16213e;padding:12px;text-align:left;border-bottom:2px solid #00d4ff}
+td{padding:10px;border-bottom:1px solid #333}
+tr:hover{background:#1f3460}
+.positive{color:#00ff88} .negative{color:#ff4444}
+.price{color:#ffd700} .pe{color:#00d4ff}
+.footer{text-align:center;margin-top:30px;color:#666}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>📊 26檔產業龍頭</h1>
-        <p class="subtitle">更新: 2026-04-28 13:28</p>
-        
-        <a href="26industries-report.html" class="btn">查看完整分析報告 →</a>
-        
-        <div class="stock-list">
-            <h2 style="margin: 1.5rem 0;">股票清單</h2>
-
-            <div class="stock-item">
-                <span class="stock-code">2330</span>
-                <span class="stock-name">台積電</span>
-                <span class="rating" style="background:#3FB950;">🟢建議持有</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2317</span>
-                <span class="stock-name">鴻海</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2313</span>
-                <span class="stock-name">華通</span>
-                <span class="rating" style="background:#3FB950;">🟢建議持有</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">3008</span>
-                <span class="stock-name">大立光</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">9921</span>
-                <span class="stock-name">巨大</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2886</span>
-                <span class="stock-name">兆豐金</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1216</span>
-                <span class="stock-name">統一</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2207</span>
-                <span class="stock-name">和泰車</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2618</span>
-                <span class="stock-name">長榮航</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2412</span>
-                <span class="stock-name">中華電</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2002</span>
-                <span class="stock-name">中鋼</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1102</span>
-                <span class="stock-name">亞泥</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1301</span>
-                <span class="stock-name">台塑</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1476</span>
-                <span class="stock-name">儒鴻</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">4743</span>
-                <span class="stock-name">合一</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2347</span>
-                <span class="stock-name">智邦</span>
-                <span class="rating" style="background:#0066CC;">🔵成長潛力</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">5880</span>
-                <span class="stock-name">街口</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2734</span>
-                <span class="stock-name">晶華</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1229</span>
-                <span class="stock-name">聯華</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">1909</span>
-                <span class="stock-name">永豐餘</span>
-                <span class="rating" style="background:#F85149;">🔴風險</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">3054</span>
-                <span class="stock-name">安國</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2495</span>
-                <span class="stock-name">普安</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2408</span>
-                <span class="stock-name">南亞科</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">2344</span>
-                <span class="stock-name">華邦電</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">8299</span>
-                <span class="stock-name">群聯</span>
-                <span class="rating" style="background:#F8510F;">🟠留意</span>
-            </div>
-            <div class="stock-item">
-                <span class="stock-code">3532</span>
-                <span class="stock-name">台勝科</span>
-                <span class="rating" style="background:#D29922;">🟡觀望</span>
-            </div>
-        </div>
-    </div>
+<h1>📈 26檔產業龍頭分析報告</h1>
+<p>更新日期: 2026-05-05 | 資料來源: yfinance</p>
+<table>
+<tr><th>代號</th><th>名稱</th><th>股價</th><th>本益比</th><th>EPS</th><th>營收成長</th><th>ROE</th><th>評等</th></tr>
+<tr><td>2330</td><td>台積電</td><td class='price'>$2250.0</td><td class='pe'>28.67</td><td>78.49</td><td class='negative'>35.1%</td><td>36.2%</td><td>🟠</td></tr>
+<tr><td>2317</td><td>鴻海</td><td class='price'>$239.5</td><td class='pe'>17.26</td><td>13.88</td><td class='negative'>22.3%</td><td>11.3%</td><td>🟢</td></tr>
+<tr><td>3008</td><td>巨大</td><td class='price'>$2545.0</td><td class='pe'>15.81</td><td>160.94</td><td class='negative'>6.6%</td><td>11.5%</td><td>🟠</td></tr>
+<tr><td>2707</td><td>晶華</td><td class='price'>$169.5</td><td class='pe'>14.6</td><td>11.61</td><td class='negative'>6.6%</td><td>31.6%</td><td>🟠</td></tr>
+<tr><td>2618</td><td>長榮</td><td class='price'>$34.0</td><td class='pe'>7.02</td><td>4.84</td><td class='negative'>1.9%</td><td>19.7%</td><td>🟠</td></tr>
+<tr><td>1216</td><td>聯發科</td><td class='price'>$69.1</td><td class='pe'>20.03</td><td>3.45</td><td class='negative'>-0.1%</td><td>14.9%</td><td>🟠</td></tr>
+<tr><td>2207</td><td>和泰車</td><td class='price'>$478.0</td><td class='pe'>14.21</td><td>33.63</td><td class='negative'>-0.2%</td><td>18.9%</td><td>🟠</td></tr>
+<tr><td>1109</td><td>信大</td><td class='price'>$15.4</td><td class='pe'>14.95</td><td>1.03</td><td class='negative'>-0.4%</td><td>3.7%</td><td>🟠</td></tr>
+<tr><td>1476</td><td>儒鴻</td><td class='price'>$336.5</td><td class='pe'>16.54</td><td>20.34</td><td class='negative'>-3.2%</td><td>18.8%</td><td>🟠</td></tr>
+<tr><td>1707</td><td>葡萄王</td><td class='price'>$112.5</td><td class='pe'>13.84</td><td>8.13</td><td class='negative'>-4.8%</td><td>15.6%</td><td>🟠</td></tr>
+<tr><td>2105</td><td>正新</td><td class='price'>$31.0</td><td class='pe'>20.95</td><td>1.48</td><td class='negative'>-8.0%</td><td>5.4%</td><td>🟠</td></tr>
+<tr><td>2882</td><td>中華電</td><td class='price'>$77.2</td><td class='pe'>11.08</td><td>6.97</td><td class='negative'>112.9%</td><td>-</td><td>🟢</td></tr>
+<tr><td>2345</td><td>智邦</td><td class='price'>$2495.0</td><td class='pe'>48.59</td><td>51.35</td><td class='negative'>84.8%</td><td>55.9%</td><td>🟠</td></tr>
+<tr><td>2360</td><td>百和</td><td class='price'>$2235.0</td><td class='pe'>74.43</td><td>30.03</td><td class='negative'>72.7%</td><td>-</td><td>🔴</td></tr>
+<tr><td>2481</td><td>補教</td><td class='price'>$102.0</td><td class='pe'>33.22</td><td>3.07</td><td class='negative'>11.3%</td><td>8.8%</td><td>🟠</td></tr>
+<tr><td>2412</td><td>中華電信</td><td class='price'>$136.0</td><td class='pe'>27.42</td><td>4.96</td><td class='negative'>0.5%</td><td>10.1%</td><td>🟠</td></tr>
+<tr><td>9921</td><td>兆豐金</td><td class='price'>$69.3</td><td class='pe'>36.86</td><td>1.88</td><td class='negative'>-9.5%</td><td>2.3%</td><td>🟠</td></tr>
+<tr><td>2313</td><td>華碩</td><td class='price'>$274.5</td><td class='pe'>45.45</td><td>6.04</td><td class='negative'>6.0%</td><td>14.2%</td><td>🟠</td></tr>
+<tr><td>4960</td><td>LED</td><td class='price'>$42.6</td><td class='pe'>-</td><td>-2.59</td><td class='negative'>3.5%</td><td>-18.0%</td><td>🟠</td></tr>
+<tr><td>1605</td><td>華新</td><td class='price'>$32.4</td><td class='pe'>41.01</td><td>0.79</td><td class='negative'>-10.3%</td><td>1.4%</td><td>🟠</td></tr>
+<tr><td>6962</td><td>壽險</td><td class='price'>$35.45</td><td class='pe'>12.14</td><td>2.92</td><td class='negative'>-11.5%</td><td>6.9%</td><td>🟠</td></tr>
+<tr><td>2002</td><td>中鋼</td><td class='price'>$18.6</td><td class='pe'>-</td><td>-0.29</td><td class='negative'>-13.0%</td><td>-1.0%</td><td>🟠</td></tr>
+<tr><td>1301</td><td>台塑</td><td class='price'>$51.3</td><td class='pe'>-</td><td>-1.56</td><td class='negative'>-18.3%</td><td>-3.1%</td><td>🟠</td></tr>
+<tr><td>2362</td><td>光洋科</td><td class='price'>$39.2</td><td class='pe'>19.31</td><td>2.03</td><td class='negative'>-29.9%</td><td>2.7%</td><td>🟠</td></tr>
+<tr><td>1717</td><td>長興</td><td class='price'>$79.0</td><td class='pe'>55.63</td><td>1.42</td><td class='negative'>-10.2%</td><td>6.0%</td><td>🔴</td></tr>
+<tr><td>6168</td><td>雲品</td><td class='price'>$27.65</td><td class='pe'>553.0</td><td>0.05</td><td class='negative'>4.6%</td><td>-0.1%</td><td>🔴</td></tr>
+</table>
+<div class="footer">
+🟢價值型 🟠中立 🔴風險<br>
+備註：本報告僅供參考，不構成��資建議 | 資料更新：2026-05-05
+</div>
 </body>
 </html>
