@@ -5,32 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>26檔產業龍頭分析報告</title>
 <style>
-body { font-family: 'Segoe UI', sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #1a1a2e; color: #eee; }
-h1 { color: #00d4ff; border-bottom: 2px solid #00d4ff; padding-bottom: 10px; }
-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-th { background: #16213e; padding: 12px; text-align: left; border-bottom: 2px solid #00d4ff; }
-td { padding: 10px; border-bottom: 1px solid #333; }
-tr:hover { background: #1f3460; }
-.price { color: #00ff88; font-weight: bold; }
-.pe { color: #ffaa00; }
-.positive { color: #00ff88; } .negative { color: #ff4444; }
+body{font-family:'Segoe UI',sans-serif;max-width:1200px;margin:0 auto;padding:20px;background:#1a1a2e;color:#eee}
+h1{color:#00d4ff;border-bottom:2px solid #00d4ff;padding-bottom:10px}
+table{width:100%;border-collapse:collapse;margin:20px 0}
+th{background:#16213e;padding:12px;text-align:left;border-bottom:2px solid #00d4ff}
+td{padding:10px;border-bottom:1px solid #333}
+tr:hover{background:#1f3460}
+.price{color:#00ff88;font-weight:bold}
+.pe{color:#ffaa00}
+.positive{color:#00ff88}.negative{color:#ff4444}
 </style>
 </head>
 <body>
-<h1>📊 26檔產業龍頭分析報告</h1>
+<h1>📈 26檔產業龍頭分析報告</h1>
 <p>更新日期: 2026-05-06 | 資料來源: yfinance + TWSE</p>
-
-<h2>💰 26檔產業龍頭詳細數據</h2>
 <table>
-<tr><th>代碼</th><th>名稱</th><th>收盤價</th><th>本益比</th><th>EPS</th><th>ROE%</th><th>營收成長%</th><th>法人買賣超</th><th>評等</th></tr>
-<tr><td>2330</td><td>台積電</td><td class='price'>$2250.0</td><td class='pe'>30.6</td><td>73.58</td><td class='positive'>36.2%</td><td class='positive'>35.1%</td><td>-858.1萬</td><td>🟢</td></tr>
-<tr><td>2317</td><td>鴻海</td><td class='price'>$252.0</td><td class='pe'>18.8</td><td>13.39</td><td class='positive'>11.3%</td><td class='positive'>22.3%</td><td>+8261.9萬</td><td>🟢</td></tr>
-<tr><td>3008</td><td>大立光</td><td class='price'>$2520.0</td><td class='pe'>16.0</td><td>157.28</td><td class='positive'>11.5%</td><td class='positive'>6.6%</td><td>-5.6萬</td><td>🟡</td></tr>
-<tr><td>2313</td><td>華通</td><td class='price'>$250.0</td><td class='pe'>45.5</td><td>5.49</td><td class='positive'>14.2%</td><td class='positive'>6.0%</td><td>+1403.1萬</td><td>🟠</td></tr>
-<tr><td>1605</td><td>華新</td><td class='price'>$32.6</td><td class='pe'>43.5</td><td>0.75</td><td class='positive'>1.4%</td><td class='negative'>-10.3%</td><td>+560.6萬</td><td>🟠</td></tr>
-<tr><td>1802</td><td>台玻</td><td class='price'>$71.2</td><td class='pe'>-</td><td>-0.20</td><td class='negative'>-1.4%</td><td class='negative'>-6.6%</td><td>+2160.4萬</td><td>🔴</td></tr>
-<tr><td>2887</td><td>台新新金</td><td class='price'>$23.9</td><td class='pe'>12.5</td><td>1.91</td><td class='positive'>10.5%</td><td class='positive'>165.9%</td><td>+5276.1萬</td><td>🟢</td></tr>
-<tr><td>1717</td><td>長興</td><td class='price'>$79.4</td><td class='pe'>56.3</td><td>1.41</td><td class='positive'>6.0%</td><td class='negative'>-10.2%</td><td>-410.1萬</td><td>🟠</td></tr>
+<tr><th>代號</th><th>名稱</th><th>股價</th><th>本益比</th><th>EPS</th><th>營收成長</th><th>ROE</th><th>法人買賣超</th><th>評等</th></tr>
+<tr><td>2330</td><td>台積電</td><td class='price'>$2250.0</td><td class='pe'>30.6</td><td>73.58</td><td class='positive'>35.1%</td><td class='positive'>36.2%</td><td>-858.1萬</td><td>🟢</td></tr>
+<tr><td>2317</td><td>鴻海</td><td class='price'>$252.0</td><td class='pe'>18.8</td><td>13.39</td><td class='positive'>22.3%</td><td class='positive'>11.3%</td><td>+8261.9萬</td><td>🟢</td></tr>
+<tr><td>3008</td><td>大立光</td><td class='price'>$2520.0</td><td class='pe'>16.0</td><td>157.28</td><td class='positive'>6.6%</td><td class='positive'>11.5%</td><td>-5.6萬</td><td>🟡</td></tr>
+<tr><td>2707</td><td>晶華</td><td class='price'>$170.0</td><td class='pe'>14.9</td><td>11.37</td><td class='positive'>6.6%</td><td class='positive'>31.6%</td><td>-6.8萬</td><td>🔵</td></tr>
+<tr><td>2618</td><td>長榮</td><td class='price'>$34.0</td><td class='pe'>7.1</td><td>4.80</td><td class='positive'>1.9%</td><td class='positive'>19.7%</td><td>+231.7萬</td><td>🔵</td></tr>
+<tr><td>1216</td><td>聯發科</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2207</td><td>和泰車</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>1109</td><td>信大</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>1476</td><td>儒鴻</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>1707</td><td>葡萄王</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2105</td><td>正新</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2882</td><td>中華電</td><td class='price'>$78.7</td><td class='pe'>11.2</td><td>7.06</td><td class='positive'>112.9%</td><td class='negative'>-</td><td>+987.8萬</td><td>🟡</td></tr>
+<tr><td>2345</td><td>智邦</td><td class='price'>$2485.0</td><td class='pe'>53.0</td><td>46.91</td><td class='positive'>84.8%</td><td class='positive'>55.9%</td><td>-0.6萬</td><td>🟢</td></tr>
+<tr><td>2360</td><td>百和</td><td class='price'>$2345.0</td><td class='pe'>85.3</td><td>27.49</td><td class='positive'>72.7%</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2481</td><td>補教</td><td class='price'>$101.5</td><td class='pe'>32.6</td><td>3.11</td><td class='positive'>11.3%</td><td class='positive'>8.8%</td><td>+479.9萬</td><td>🟠</td></tr>
+<tr><td>2412</td><td>中華電信</td><td class='price'>$136.0</td><td class='pe'>27.3</td><td>4.98</td><td class='positive'>0.5%</td><td class='positive'>10.1%</td><td>+48.6萬</td><td>🟠</td></tr>
+<tr><td>9921</td><td>巨大</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2313</td><td>華碩</td><td class='price'>$250.0</td><td class='pe'>45.5</td><td>5.49</td><td class='positive'>6.0%</td><td class='positive'>14.2%</td><td>+1403.1萬</td><td>🟠</td></tr>
+<tr><td>4960</td><td>LED</td><td class='price'>$41.0</td><td class='pe'>-</td><td>-2.58</td><td class='positive'>3.5%</td><td class='negative'>-18.0%</td><td>-114.9萬</td><td>🔴</td></tr>
+<tr><td>1605</td><td>華新</td><td class='price'>$32.6</td><td class='pe'>43.5</td><td>0.75</td><td class='negative'>-10.3%</td><td class='positive'>1.4%</td><td>+560.6萬</td><td>🟠</td></tr>
+<tr><td>6962</td><td>元太</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2002</td><td>台泥</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>1301</td><td>台塑</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>2362</td><td>廣積</td><td class='price'>-</td><td class='pe'>-</td><td>-</td><td class='negative'>-</td><td class='negative'>-</td><td>-</td><td>🟠</td></tr>
+<tr><td>1717</td><td>長興</td><td class='price'>$79.4</td><td class='pe'>56.3</td><td>1.41</td><td class='negative'>-10.2%</td><td class='positive'>6.0%</td><td>-410.1萬</td><td>🟠</td></tr>
+<tr><td>6168</td><td>精剛</td><td class='price'>$27.2</td><td class='pe'>544.0</td><td>0.05</td><td class='positive'>4.6%</td><td class='negative'>-0.1%</td><td>+48.4萬</td><td>🔴</td></tr>
 </table>
 </body>
 </html>
