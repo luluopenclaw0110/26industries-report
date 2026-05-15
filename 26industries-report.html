@@ -1,1498 +1,744 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>26檔產業龍頭深度分析報告</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            min-height: 100vh;
-            color: #e0e0e0;
-            padding: 2rem;
-        }
-        
-        .container { max-width: 1200px; margin: 0 auto; }
-        
-        .header {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .header h1 { font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
-        .header p { color: #a0a0a0; }
-        
-        .filter-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        
-        .filter-btn {
-            padding: 0.75rem 1.25rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #fff;
-            transition: all 0.3s ease;
-            opacity: 0.6;
-        }
-        
-        .filter-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.05);
-        }
-        
-        .filter-btn.active {
-            opacity: 1;
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255,255,255,0.3);
-        }
-        
-        .summary {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        
-        .summary-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            text-align: center;
-        }
-        
-        .summary-card .count { font-size: 2rem; font-weight: bold; }
-        
-        .stock-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .stock-card.hidden {
-            display: none;
-        }
-        
-        .stock-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .stock-code {
-            background: #2d3748;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        
-        .stock-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            flex-grow: 1;
-        }
-        
-        .rating-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            color: #fff;
-        }
-        
-        .price-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 8px;
-        }
-        
-        .price { font-size: 1.5rem; font-weight: bold; color: #fff; }
-        .change { font-size: 1rem; }
-        
-        .indicators {
-            font-size: 0.85rem;
-            color: #888;
-            margin-top: 0.25rem;
-        }
-        
-        .stock-section { margin-bottom: 1.5rem; }
-        .stock-section h3 { color: #58a6ff; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .stock-section p { color: #c0c0c0; line-height: 1.6; }
-        
-        .strengths-risks {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        
-        .strengths, .risks {
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .strengths h4, .risks h4 { margin-bottom: 0.5rem; }
-        .strengths h4 { color: #3fb950; }
-        .risks h4 { color: #f85149; }
-        
-        @media (max-width: 768px) {
-            .strengths-risks { grid-template-columns: 1fr; }
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 2rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>26檔產業龍頭分析 2026-05-14</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; margin: 40px; background: #0d1117; color: #e6edf3; }
+h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+h2 { color: #f0883e; margin-top: 30px; }
+h3 { color: #8b949e; }
+h4 { color: #c9d1d9; }
+table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+th { background: #161b22; color: #58a6ff; padding: 10px; text-align: left; border: 1px solid #30363d; }
+td { padding: 8px 10px; border: 1px solid #30363d; }
+tr:nth-child(even) { background: #161b22; }
+.rating-green { color: #3fb950; font-weight: bold; }
+.rating-blue { color: #58a6ff; font-weight: bold; }
+.rating-yellow { color: #d29922; font-weight: bold; }
+.rating-orange { color: #db6d28; font-weight: bold; }
+.rating-red { color: #f85149; font-weight: bold; }
+.filter-btn { padding: 6px 14px; margin: 3px; border: 1px solid #30363d; background: #21262d; color: #e6edf3; cursor: pointer; border-radius: 4px; }
+.filter-btn:hover { background: #30363d; }
+.filter-btn.active { background: #388bfd; border-color: #58a6ff; }
+.footer { margin-top: 40px; color: #8b949e; font-size: 12px; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📊 26檔產業龍頭深度分析報告</h1>
-            <p>更新時間: 2026-05-14 15:16</p>
-        </div>
-        
-        <div class="filter-section">
-            <button class="filter-btn active" data-filter="all" style="background: #58a6ff;">全部 (26)</button>
-            <button class="filter-btn" data-filter="🟢建議持有" style="background: #3FB950;">🟢建議持有 (2)</button><button class="filter-btn" data-filter="🔵成長潛力" style="background: #58A6FF;">🔵成長潛力 (1)</button><button class="filter-btn" data-filter="🟡觀望" style="background: #D29922;">🟡觀望 (8)</button><button class="filter-btn" data-filter="🟠留意" style="background: #F0883E;">🟠留意 (9)</button><button class="filter-btn" data-filter="🔴風險" style="background: #F85149;">🔴風險 (6)</button>
-        </div>
-        
-        <div class="summary">
-            <div class="summary-card">
-                <div class="count" style="color: #3fb950;">2</div>
-                <div>建議持有</div>
-            </div>
-            <div class="summary-card">
-                <div class="count" style="color: #58a6ff;">1</div>
-                <div>成長潛力</div>
-            </div>
-            <div class="summary-card">
-                <div class="count" style="color: #d29922;">8</div>
-                <div>觀望</div>
-            </div>
-            <div class="summary-card">
-                <div class="count" style="color: #f0883e;">9</div>
-                <div>留意</div>
-            </div>
-            <div class="summary-card">
-                <div class="count" style="color: #f85149;">6</div>
-                <div>風險</div>
-            </div>
-        </div>
+<h1>🏭 26檔產業龍頭深度分析 2026-05-14</h1>
+<p>更新時間：2026-05-14 收盤 | 資料來源：yfinance、TWSE</p>
 
-        <div class="rating-section" data-rating="🟢建議持有">
-        <h2 style="color: #3FB950; margin: 2rem 0 1rem;">🟢建議持有</h2>
+<h2>📋 評等總覽</h2>
+<p>
+<button class="filter-btn active" onclick="filterAll()">全部</button>
+<button class="filter-btn" onclick="filterRating('green')">🟢建議持有</button>
+<button class="filter-btn" onclick="filterRating('blue')">🔵成長潛力</button>
+<button class="filter-btn" onclick="filterRating('yellow')">🟡觀望</button>
+<button class="filter-btn" onclick="filterRating('orange')">🟠留意</button>
+<button class="filter-btn" onclick="filterRating('red')">🔴風險</button>
+</p>
+<table id="stock-table">
+<tr>
+  <th>代碼</th><th>名稱</th><th>評等</th><th>股價</th><th>PE</th><th>ROE</th><th>營收成長</th><th>三大法人(張)</th><th>評估理由</th>
+</tr>
+<tr class="row-">
+  <td><strong>2330</strong></td>
+  <td>台積電</td>
+  <td class="rating-green">🟢</td>
+  <td>2265.0</td>
+  <td>30.8</td>
+  <td>36.2%</td>
+  <td>35.1%</td>
+  <td>6480000</td>
+  <td>建議持有｜ROE=36.2%、營收成長=35.1%、法人買超6480000張</td>
+</tr><tr class="row-">
+  <td><strong>2317</strong></td>
+  <td>鴻海</td>
+  <td class="rating-green">🟢</td>
+  <td>248.5</td>
+  <td>18.5</td>
+  <td>11.3%</td>
+  <td>22.3%</td>
+  <td>8000</td>
+  <td>建議持有｜ROE=11.3%、營收成長=22.3%、法人買超8000張</td>
+</tr><tr class="row-">
+  <td><strong>2303</strong></td>
+  <td>聯電</td>
+  <td class="rating-green">🟢</td>
+  <td>110.0</td>
+  <td>27.9</td>
+  <td>12.5%</td>
+  <td>5.5%</td>
+  <td>11463000</td>
+  <td>建議持有｜ROE=12.5%、法人買超11463000張</td>
+</tr><tr class="row-">
+  <td><strong>2308</strong></td>
+  <td>台達電</td>
+  <td class="rating-green">🟢</td>
+  <td>2075.0</td>
+  <td>90.0</td>
+  <td>24.3%</td>
+  <td>34.0%</td>
+  <td>72988</td>
+  <td>建議持有｜ROE=24.3%、營收成長=34.0%、法人買超72988張</td>
+</tr><tr class="row-">
+  <td><strong>2382</strong></td>
+  <td>廣達</td>
+  <td class="rating-green">🟢</td>
+  <td>306.0</td>
+  <td>16.2</td>
+  <td>31.2%</td>
+  <td>53.0%</td>
+  <td>2000</td>
+  <td>建議持有｜ROE=31.2%、營收成長=53.0%</td>
+</tr><tr class="row-">
+  <td><strong>2345</strong></td>
+  <td>智邦</td>
+  <td class="rating-green">🟢</td>
+  <td>2505.0</td>
+  <td>53.5</td>
+  <td>56.1%</td>
+  <td>64.0%</td>
+  <td>830000</td>
+  <td>建議持有｜ROE=56.1%、營收成長=64.0%、法人買超830000張</td>
+</tr><tr class="row-">
+  <td><strong>2454</strong></td>
+  <td>聯發科</td>
+  <td class="rating-green">🟢</td>
+  <td>3260.0</td>
+  <td>49.3</td>
+  <td>25.4%</td>
+  <td>-2.7%</td>
+  <td>76000</td>
+  <td>建議持有｜ROE=25.4%、法人買超76000張</td>
+</tr><tr class="row-">
+  <td><strong>2376</strong></td>
+  <td>技嘉</td>
+  <td class="rating-green">🟢</td>
+  <td>326.5</td>
+  <td>19.0</td>
+  <td>22.9%</td>
+  <td>36.2%</td>
+  <td>256934</td>
+  <td>建議持有｜ROE=22.9%、營收成長=36.2%、法人買超256934張</td>
+</tr><tr class="row-">
+  <td><strong>3022</strong></td>
+  <td>威盛</td>
+  <td class="rating-blue">🔵</td>
+  <td>67.3</td>
+  <td>14.6</td>
+  <td>7.3%</td>
+  <td>-4.8%</td>
+  <td>0</td>
+  <td>成長潛力｜</td>
+</tr><tr class="row-">
+  <td><strong>6230</strong></td>
+  <td>超微</td>
+  <td class="rating-orange">🟠</td>
+  <td>137.0</td>
+  <td>N/A</td>
+  <td>-3.8%</td>
+  <td>8.1%</td>
+  <td>0</td>
+  <td>留意｜</td>
+</tr><tr class="row-">
+  <td><strong>6257</strong></td>
+  <td>矽力</td>
+  <td class="rating-green">🟢</td>
+  <td>217.0</td>
+  <td>35.7</td>
+  <td>13.9%</td>
+  <td>7.1%</td>
+  <td>107000</td>
+  <td>建議持有｜ROE=13.9%、法人買超107000張</td>
+</tr><tr class="row-">
+  <td><strong>1513</strong></td>
+  <td>中興電</td>
+  <td class="rating-green">🟢</td>
+  <td>150.0</td>
+  <td>18.6</td>
+  <td>19.9%</td>
+  <td>2.2%</td>
+  <td>0</td>
+  <td>建議持有｜ROE=19.9%</td>
+</tr><tr class="row-">
+  <td><strong>2542</strong></td>
+  <td>興富發</td>
+  <td class="rating-green">🟢</td>
+  <td>43.75</td>
+  <td>20.8</td>
+  <td>8.7%</td>
+  <td>36.9%</td>
+  <td>18000</td>
+  <td>建議持有｜營收成長=36.9%、法人買超18000張</td>
+</tr><tr class="row-">
+  <td><strong>2603</strong></td>
+  <td>長榮</td>
+  <td class="rating-green">🟢</td>
+  <td>200.5</td>
+  <td>6.3</td>
+  <td>11.8%</td>
+  <td>-26.0%</td>
+  <td>11000</td>
+  <td>建議持有｜ROE=11.8%、法人買超11000張</td>
+</tr><tr class="row-">
+  <td><strong>2609</strong></td>
+  <td>陽明</td>
+  <td class="rating-blue">🔵</td>
+  <td>48.05</td>
+  <td>9.8</td>
+  <td>3.2%</td>
+  <td>-15.1%</td>
+  <td>30000</td>
+  <td>成長潛力｜法人買超30000張</td>
+</tr><tr class="row-">
+  <td><strong>2618</strong></td>
+  <td>東和</td>
+  <td class="rating-green">🟢</td>
+  <td>34.65</td>
+  <td>7.2</td>
+  <td>22.4%</td>
+  <td>10.1%</td>
+  <td>24000</td>
+  <td>建議持有｜ROE=22.4%、法人買超24000張</td>
+</tr><tr class="row-">
+  <td><strong>2881</strong></td>
+  <td>富邦金</td>
+  <td class="rating-green">🟢</td>
+  <td>96.1</td>
+  <td>11.5</td>
+  <td>12.3%</td>
+  <td>24.0%</td>
+  <td>0</td>
+  <td>建議持有｜ROE=12.3%、營收成長=24.0%</td>
+</tr><tr class="row-">
+  <td><strong>2891</strong></td>
+  <td>中信金</td>
+  <td class="rating-green">🟢</td>
+  <td>54.8</td>
+  <td>13.5</td>
+  <td>15.5%</td>
+  <td>43.3%</td>
+  <td>0</td>
+  <td>建議持有｜ROE=15.5%、營收成長=43.3%</td>
+</tr><tr class="row-">
+  <td><strong>5871</strong></td>
+  <td>中租-KY</td>
+  <td class="rating-green">🟢</td>
+  <td>106.0</td>
+  <td>9.4</td>
+  <td>10.6%</td>
+  <td>0.3%</td>
+  <td>7000</td>
+  <td>建議持有｜ROE=10.6%、法人買超7000張</td>
+</tr><tr class="row-">
+  <td><strong>6415</strong></td>
+  <td>矽力-KY</td>
+  <td class="rating-yellow">🟡</td>
+  <td>468.0</td>
+  <td>74.4</td>
+  <td>6.9%</td>
+  <td>5.5%</td>
+  <td>315000</td>
+  <td>觀望｜法人買超315000張</td>
+</tr><tr class="row-">
+  <td><strong>4958</strong></td>
+  <td>臻鼎-KY</td>
+  <td class="rating-yellow">🟡</td>
+  <td>401.0</td>
+  <td>59.2</td>
+  <td>7.1%</td>
+  <td>1.6%</td>
+  <td>841000</td>
+  <td>觀望｜法人買超841000張</td>
+</tr><tr class="row-">
+  <td><strong>6667</strong></td>
+  <td>信紘科</td>
+  <td class="rating-green">🟢</td>
+  <td>248.5</td>
+  <td>18.2</td>
+  <td>28.2%</td>
+  <td>61.1%</td>
+  <td>N/A</td>
+  <td>建議持有｜ROE=28.2%、營收成長=61.1%</td>
+</tr><tr class="row-">
+  <td><strong>6613</strong></td>
+  <td>朋億</td>
+  <td class="rating-blue">🔵</td>
+  <td>252.5</td>
+  <td>19.0</td>
+  <td>19.2%</td>
+  <td>-11.3%</td>
+  <td>N/A</td>
+  <td>成長潛力｜ROE=19.2%</td>
+</tr><tr class="row-">
+  <td><strong>3653</strong></td>
+  <td>合一</td>
+  <td class="rating-yellow">🟡</td>
+  <td>3465.0</td>
+  <td>96.2</td>
+  <td>30.2%</td>
+  <td>11.6%</td>
+  <td>5000</td>
+  <td>觀望｜ROE=30.2%</td>
+</tr>
+</table>
 
-    <div class="stock-card" data-rating="🟢建議持有">
-        <div class="stock-header">
-            <span class="stock-code">2330</span>
-            <span class="stock-name">台積電</span>
-            <span class="rating-badge" style="background: #3FB950;">🟢建議持有</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">2270.0</span>
-            <span class="change" style="color: #3fb950;">+50.0 (+2.25%)</span>
-        </div><div class="indicators">MA5: ▲2254.0 | MA20: ▲2182.75 | RSI: 63.2 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>台積電為台股龍頭，法人買超970萬張為全體最高，外資買超830萬張，投信亦有116萬張買超。三大法人全面凊睞，加上EPS 66.26元展現頂尖獲利能力，基本面無可挑剔。AI應用爆發、先進製程需求暢旺，長線投資價值鮮明。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人大幅買超970萬張，外資買超830萬張，投信買超116萬張，三大法人全面凊睞。EPS 66.26元，獲利能力極佳。AI、高速運算、先進製程需求暢旺，龍頭地位稳固，適合中长期持有。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -7,085,880 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人大幅買超970萬張，外資買超830萬張，投信買超116萬張，三大法人全面凊睞。EPS 66.26元，獲利能力極佳。AI、高速運算、先進製程需求暢旺，龍頭地位稳固，適合中长期持有。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>法人凊睞度最高（970萬張），EPS 66.26元展現超強獲利，全球AI晶片龍頭，先進製程技術領先</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>估值偏高，PE未知需留意，景氣循環影響，地緣政治風險</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟢建議持有">
-        <div class="stock-header">
-            <span class="stock-code">2313</span>
-            <span class="stock-name">華通</span>
-            <span class="rating-badge" style="background: #3FB950;">🟢建議持有</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">245.5</span>
-            <span class="change" style="color: #3fb950;">+8.5 (+3.59%)</span>
-        </div><div class="indicators">MA5: ▼247.6 | MA20: ▼247.02 | RSI: 56.5 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>華通法人買超1410萬張，外資買超2020萬張為全體次高，法人資金態度积极。雖投信賣超611萬張，但整体仍受法人青睞。PCB/HDI龍頭廠，受惠AI終端、智慧機升級、汽車雷達板需求，適合中長期持有。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買超1410萬張，外資買超2020萬張為全體次高，基本面穩健。PCB/HDI龍頭，受惠AI終端、智慧機、汽車電子需求，法人資金持續流入。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -44,595,578 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買超1410萬張，外資買超2020萬張為全體次高，基本面穩健。PCB/HDI龍頭，受惠AI終端、智慧機、汽車電子需求，法人資金持續流入。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>法人買超1410萬張，外資買超2020萬張為次高，營收穩健，PCB/HDI技術領先，受惠AI終端與智慧機升級潮</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>投信賣超611萬張顯示内部人略有分歧，消費電子景氣波動，原物料成本影響</p>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+<h2>🔍 詳細分析</h2>
 
-        <div class="rating-section" data-rating="🔵成長潛力">
-        <h2 style="color: #58A6FF; margin: 2rem 0 1rem;">🔵成長潛力</h2>
+<h2>2330 台積電 <span class="rating-green">🟢</span></h2>
 
-    <div class="stock-card" data-rating="🔵成長潛力">
-        <div class="stock-header">
-            <span class="stock-code">2347</span>
-            <span class="stock-name">智邦</span>
-            <span class="rating-badge" style="background: #0066CC;">🔵成長潛力</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">83.3</span>
-            <span class="change" style="color: #3fb950;">+0.2 (+0.24%)</span>
-        </div><div class="indicators">MA5: ▼83.98 | MA20: ▲83.22 | RSI: 52.5 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>智邦營收成長39%為全體最高，投信買超195萬張顯示特定法人逆势加碼。AI資料中心建置帶動網通設備需求，智邦為白牌交換器龍頭，受惠明顯。雖外资卖超，但投信態度積極，成長潛力佳。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>投信買超195萬張，外資賣超但投信逆勢加碼。營收成長39%為全體最高，EPS 5.08元，網通白牌龍頭，受惠AI資料中心建置需求，成長動能明確。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -899,532 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>投信買超195萬張，外資賣超但投信逆勢加碼。營收成長39%為全體最高，EPS 5.08元，網通白牌龍頭，受惠AI資料中心建置需求，成長動能明確。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>營收成長39%全體最高，投信買超195萬張顯示特定法人青睞，網通白牌交換器全球龍頭，受惠AI資料中心建置需求</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>外资卖超172萬張顯示法人有分歧，EPS絕對值不高（5.08元），景氣循環影響網通需求</p>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+<h3>📊 產業分析</h3>
+<p>半導體先進製程全球壟斷，AI/HPC需求無敵</p>
 
-        <div class="rating-section" data-rating="🟡觀望">
-        <h2 style="color: #D29922; margin: 2rem 0 1rem;">🟡觀望</h2>
+<h3>📰 消息面</h3>
+<p>法人動向：外資買600484張、投信賣0張、自營商賣0張</p>
 
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">3008</span>
-            <span class="stock-name">大立光</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">3135.0</span>
-            <span class="change" style="color: #3fb950;">+285.0 (+10.0%)</span>
-        </div><div class="indicators">MA5: ▲2779.0 | MA20: ▲2639.25 | RSI: 81.0 (過熱)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>大立光EPS 46.63元體現高獲利能力，營收成長15.39%亦佳，但法人買超僅5.8萬張，參與度明顯不足。智慧機鏡頭規格升級放緩，加上法人關注度低，短期缺乏資金動能，建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買超僅5.8萬張，規模偏小。營收成長15.39%，EPS 46.63元體現高獲利，但智慧機鏡頭升級放緩，法人參與度低。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +87,225 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買超僅5.8萬張，規模偏小。營收成長15.39%，EPS 46.63元體現高獲利，但智慧機鏡頭升級放緩，法人參與度低。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>EPS 46.63元展現高獲利，營收成長15.39%，全球手機鏡頭龍頭，技術門檻高</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人買超規模極小（5.8萬張），智慧機鏡頭升級放緩，市場竞争加劇，營收波動大</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">1216</span>
-            <span class="stock-name">統一</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">74.8</span>
-            <span class="change" style="color: #f85149;">-0.4 (-0.53%)</span>
-        </div><div class="indicators">MA5: ▲74.04 | MA20: ▲71.71 | RSI: 61.6 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>統一法人資金多空分歧，外資買超131萬張但投信賣超365萬張，整體偏觀望。EPS 3.45元穩健但缺乏突出成長動能，食品本業成長有限，需等待新催化劑。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>外资買超131萬張但投信賣超365萬張，法人态度分歧。營收成長5%，EPS 3.45元穩健但無突出亮點，缺乏明顯催化劑。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +13,648,879 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>外资買超131萬張但投信賣超365萬張，法人态度分歧。營收成長5%，EPS 3.45元穩健但無突出亮點，缺乏明顯催化劑。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>營收成長5%，EPS 3.45元穩健，食品飲料龍頭，轉投資統一超與統一實穩定收益</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人態度分歧（外资買131萬，投信賣365萬），缺乏成長催化劑，本業成長有限</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">2618</span>
-            <span class="stock-name">長榮航</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">35.0</span>
-            <span class="change" style="color: #3fb950;">+0.55 (+1.6%)</span>
-        </div><div class="indicators">MA5: ▼35.21 | MA20: ▲34.55 | RSI: 60.5 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>長榮航法人多空對冲，外資賣超703萬張但投信買超568萬張，顯示不同法人對後市有分歧。EPS 4.84元尚可，客運復甦但航空業景氣波動大，持股者可以續抱但避免重倉。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>外资賣超703萬張但投信買超568萬張，多空對沖。EPS 4.84元尚可，但航空業景氣波動大，法人態度分歧。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -7,714,232 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>外资賣超703萬張但投信買超568萬張，多空對沖。EPS 4.84元尚可，但航空業景氣波動大，法人態度分歧。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>投信買超568萬張顯示特定法人青睞，EPS 4.84元尚可，客運貨運需求穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>外资賣超703萬張，航空業景氣波動大，油價風險，高固定成本結構</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">1476</span>
-            <span class="stock-name">儒鴻</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">341.5</span>
-            <span class="change" style="color: #f85149;">-7.5 (-2.15%)</span>
-        </div><div class="indicators">MA5: ▼344.9 | MA20: ▲340.22 | RSI: 56.2 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>儒鴻EPS 20.1元顯示優異獲利能力，但法人買超僅8.5萬張，外資卖超31.6萬張，整体資金動能不足。機能布景氣需觀察終端品牌庫存變化，短期建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買超8.5萬張規模小，外資賣超但投信買超40萬張，整体资金动能有限。EPS 20.1元優異，但營收成長數據缺失，缺乏明確催化劑。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -96,266 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買超8.5萬張規模小，外資賣超但投信買超40萬張，整体资金动能有限。EPS 20.1元優異，但營收成長數據缺失，缺乏明確催化劑。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>EPS 20.1元展現優異獲利，機能布/運動服飾技術領先，品牌客戶覆蓋廣</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人買超規模小（8.5萬張），外资卖超31.6萬張，營收成長數據缺失，下游客戶庫存調整</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">1229</span>
-            <span class="stock-name">聯華</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">39.95</span>
-            <span class="change" style="color: #f85149;">-0.35 (-0.87%)</span>
-        </div><div class="indicators">MA5: ▼40.8 | MA20: ▼42.09 | RSI: 23.3 (超賣)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>聯華法人賣超113萬張，外資為主要賣方。EPS 2.57元普通，基本面平穩但缺乏成長亮點。食品本業穩健但難有爆發性成長，適合追求穩定收益的投資人，不建議積極操作。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超113萬張，外資為主要賣方（111萬張），EPS 2.57元普通。食品本業穩健但缺乏成長催化劑，法人態度偏觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +112,020 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超113萬張，外資為主要賣方（111萬張），EPS 2.57元普通。食品本業穩健但缺乏成長催化劑，法人態度偏觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>食品本業穩健，轉投資收益穩定，現金殖利率穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超113萬張（外资111萬張），EPS 2.57元普通，缺乏成長動能，食品景氣溫和</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">3054</span>
-            <span class="stock-name">安國</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">67.5</span>
-            <span class="change" style="color: #f85149;">-0.3 (-0.44%)</span>
-        </div><div class="indicators">MA5: ▼68.76 | MA20: ▼70.92 | RSI: 47.9 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>安國法人賣超5萬張，顯示法人略偏空，但EPS 1.96元尚可。該股為小型股，流動性有限，資訊透明度較低，適合保守操作，整體建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超5萬張，但EPS 1.96元尚可，規模小流動性有限。數據有限，難以做出強烈判斷，建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -46,957 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超5萬張，但EPS 1.96元尚可，規模小流動性有限。數據有限，難以做出強烈判斷，建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>EPS 1.96元尚可，IC設計產業有一定技術門檻</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超5萬張，流動性有限（小市值），產業景氣波動，市場規模小</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">2344</span>
-            <span class="stock-name">華邦電</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">134.0</span>
-            <span class="change" style="color: #3fb950;">+12.0 (+9.84%)</span>
-        </div><div class="indicators">MA5: ▲120.4 | MA20: ▲100.57 | RSI: 82.3 (過熱)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>華邦電法人淨買超211萬張，投信266萬張逆勢加碼顯示特定法人看好。NOR Flash利基型記憶體需求穩定，但外资卖超顯示法人對記憶體景氣仍有分歧，適合等待方向明確後再進場。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買超211萬張，投信買超266萬張逆勢加碼，但外资卖超70萬張。NAND/DRAM記憶體景氣回升，但法人態度分歧，建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +12,730,938 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買超211萬張，投信買超266萬張逆勢加碼，但外资卖超70萬張。NAND/DRAM記憶體景氣回升，但法人態度分歧，建議觀望。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>法人淨買超211萬張，投信266萬張逆勢加碼，NOR Flash龍頭，利基型記憶體需求穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>外资卖超70萬張顯示法人有分歧，EPS 0.88元偏低，記憶體景氣波動大</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟡觀望">
-        <div class="stock-header">
-            <span class="stock-code">3532</span>
-            <span class="stock-name">台勝科</span>
-            <span class="rating-badge" style="background: #D29922;">🟡觀望</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">246.0</span>
-            <span class="change" style="color: #f85149;">-0.5 (-0.2%)</span>
-        </div><div class="indicators">MA5: ▼256.5 | MA20: ▲212.2 | RSI: 77.1 (過熱)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>台勝科法人交易量極小（僅2082張），顯示市場關注度低。EPS 1.58元偏低，半導體矽晶圓景氣溫和，缺乏明顯成長催化劑，適合有興趣的投資人長期追蹤，等待明確訊號再進場。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買賣超僅2082張（規模極小），外资買超5.3萬張但自營商賣超2.8萬張，多空抵消。EPS 1.58元偏低，半導體矽晶圓景氣溫和，基本面無突出亮點。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +50,370 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買賣超僅2082張（規模極小），外资買超5.3萬張但自營商賣超2.8萬張，多空抵消。EPS 1.58元偏低，半導體矽晶圓景氣溫和，基本面無突出亮點。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>半導體矽晶圓材料供應，8吋/12吋晶圓需求穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人买卖超極小（2082張），EPS 1.58元偏低，矽晶圓景氣溫和，擴產壓力影響毛利率</p>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=36.2%、營收成長=35.1%、法人買超6480000張</p>
 
-        <div class="rating-section" data-rating="🟠留意">
-        <h2 style="color: #F0883E; margin: 2rem 0 1rem;">🟠留意</h2>
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=30.8、ROE=36.2%、營收成長=35.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
 
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">2317</span>
-            <span class="stock-name">鴻海</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">244.5</span>
-            <span class="change" style="color: #f85149;">-6.5 (-2.59%)</span>
-        </div><div class="indicators">MA5: ▼249.5 | MA20: ▲230.85 | RSI: 64.4 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>鴻海法人淨賣超459萬張，外資賣超428萬張為主要賣壓來源。EPS 13.61元尚可，但法人態度偏空。虽拥有AI伺服器/人形機器人等新题材，但短線資金動能不足，需等待法人賣壓告一段落後才有表現空間。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超459萬張（外资卖超428萬張、投信卖超49萬張），基本面尚可但法人偏空。AI伺服器/人形機器人题材支撐營運，但短線法人賣壓待消化。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +17,350,366 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超459萬張（外资卖超428萬張、投信卖超49萬張），基本面尚可但法人偏空。AI伺服器/人形機器人题材支撐營運，但短線法人賣壓待消化。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>EPS 13.61元，AI伺服器/人形機器人/電動車布局完整，蘋果供應鏈核心廠商</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超459萬張，外資持續賣超，組裝業毛利偏低，景氣循環波動大</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">9921</span>
-            <span class="stock-name">巨大</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">73.5</span>
-            <span class="change" style="color: #f85149;">-2.2 (-2.91%)</span>
-        </div><div class="indicators">MA5: ▲71.42 | MA20: ▲69.18 | RSI: 60.6 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>巨大營收成長25.68%顯示終端需求不差，但EPS僅1.84元偏低，法人賣超62萬張，外資為主要賣方。獲利能力未能與營收成長同步，短線法人偏空，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超62萬張，外資賣超60萬張，營收成長25.68%佳，但EPS僅1.84元偏低，法人態度偏空，獲利能力待提升。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +978,528 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超62萬張，外資賣超60萬張，營收成長25.68%佳，但EPS僅1.84元偏低，法人態度偏空，獲利能力待提升。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>營收成長25.68%佳，電動自行車需求增溫，全球知名自行車品牌</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超62萬張（外资60萬張），EPS僅1.84元偏低，獲利能力不足，庫存調整壓力</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">2886</span>
-            <span class="stock-name">兆豐金</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">39.3</span>
-            <span class="change" style="color: #f85149;">-0.25 (-0.63%)</span>
-        </div><div class="indicators">MA5: ▼39.67 | MA20: ▼39.61 | RSI: 44.8 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>兆豐金法人賣超899萬張，為金融股中最沉重。三大法人全面賣超，投信賣超751萬張最顯著。EPS 1.18元偏低，加上銀行業存放款成長放緩，法人態度保守，宜謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超899萬張（投信賣超751萬張、外資賣超123萬張），三大法人全數賣超，EPS 1.18元偏低，銀行業景氣放緩，短線法人賣壓沉重。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +3,590,687 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超899萬張（投信賣超751萬張、外資賣超123萬張），三大法人全數賣超，EPS 1.18元偏低，銀行業景氣放緩，短線法人賣壓沉重。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>公股金融龍頭，存放款基盤穩固，股利政策穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超899萬張（三大法人全數賣超），EPS 1.18元偏低，存放款成長放緩，利率環境挑戰</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">2412</span>
-            <span class="stock-name">中華電</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">137.5</span>
-            <span class="change" style="color: #f85149;">0.0 (0.0%)</span>
-        </div><div class="indicators">MA5: ▲136.5 | MA20: ▲136.4 | RSI: 58.8 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>中華電法人賣超145萬張，三大法人全數賣超，顯示專業法人對其後市偏空。EPS 1.37元偏低，電信業營收成長放緩，加上5G資本支出壓力，適合追求穩定股利的投資人，不建議積極買進。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超145萬張，三大法人全數賣超。EPS 1.37元偏低，電信業營收成長放緩，法人態度保守，類債特性稀釋資本利得空間。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +7,554,093 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超145萬張，三大法人全數賣超。EPS 1.37元偏低，電信業營收成長放緩，法人態度保守，類債特性稀釋資本利得空間。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>電信龍頭，擁有穩定現金流與股利政策，中華電信MOD與5G客戶基盤穩固</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超145萬張（三大法人全數賣超），EPS 1.37元偏低，電信營收成長放緩，資本支出壓力</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">1102</span>
-            <span class="stock-name">亞泥</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">35.2</span>
-            <span class="change" style="color: #f85149;">-0.1 (-0.28%)</span>
-        </div><div class="indicators">MA5: ▲34.94 | MA20: ▼35.24 | RSI: 36.5 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>亞泥法人賣超230萬張，三大法人全數賣超，顯示專業法人偏空。EPS 3元普通，水泥業受景氣影響大，基礎建設需求成長放緩，短線資金動能不足，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超230萬張，三大法人全數賣超，EPS 3元普通。水泥業景氣偏弱，基礎建設需求放緩，法人態度保守。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#3FB950;font-weight:bold;">三大法人 +2,480,651 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超230萬張，三大法人全數賣超，EPS 3元普通。水泥業景氣偏弱，基礎建設需求放緩，法人態度保守。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>水泥垂直整合優勢，西進水泥產能穩定，業外收益來源多元</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超230萬張，三大法人全數賣超，EPS 3元普通，水泥景氣偏弱，環保與礦源成本壓力</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">5880</span>
-            <span class="stock-name">街口</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">22.75</span>
-            <span class="change" style="color: #f85149;">-0.1 (-0.44%)</span>
-        </div><div class="indicators">MA5: ▼22.89 | MA20: ▼23.13 | RSI: 34.6 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>街口法人賣超927萬張，外資卖超898萬張顯示法人持續減持。EPS 1.36元偏低，金控業受景氣放緩影響，加上金融業存放款成長停滯，短線資金動能不足，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超927萬張，外資賣超898萬張為金融股次高，EPS 1.36元偏低。金控業景氣放緩，法人持續賣超，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -2,950,384 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超927萬張，外資賣超898萬張為金融股次高，EPS 1.36元偏低。金控業景氣放緩，法人持續賣超，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>金控旗下有多元業務，互聯網金融產品有成長空間</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超927萬張，外資卖超898萬張，EPS 1.36元偏低，金控業景氣放緩</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">2495</span>
-            <span class="stock-name">普安</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">36.4</span>
-            <span class="change" style="color: #3fb950;">+0.9 (+2.54%)</span>
-        </div><div class="indicators">MA5: ▲36.23 | MA20: ▼40.43 | RSI: 32.5 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>普安法人賣超130萬張，外資114萬張為主要賣方，顯示法人持續減持。EPS 1.13元偏低，企業級储存設備市場競爭加劇，雲端巨頭自建储存減少對傳統設備廠依賴，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超130萬張，外資賣超114萬張為主要賣方，EPS 1.13元偏低。儲存事業面臨雲端競爭，法人態度保守。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -84,342 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超130萬張，外資賣超114萬張為主要賣方，EPS 1.13元偏低。儲存事業面臨雲端競爭，法人態度保守。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>儲存設備解決方案有一定技術基礎，企業級储存需求稳定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超130萬張，外資114萬張，EPS 1.13元偏低，雲端巨頭自建储存，技術競爭加劇</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">2408</span>
-            <span class="stock-name">南亞科</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">341.0</span>
-            <span class="change" style="color: #3fb950;">+20.0 (+6.23%)</span>
-        </div><div class="indicators">MA5: ▲311.6 | MA20: ▲250.92 | RSI: 82.1 (過熱)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>南亞科營收成長560%為全體最高，顯示記憶體景氣明顯回升，但法人賣超1477萬張，外資1336萬張為主要賣方。顯示法人對記憶體後市仍有疑慮，基本面復甦尚未轉化為股價動能，短線需等待法人卖壓緩解。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>外资卖超1336萬張，投信卖超137萬張，法人賣超1477萬張。營收成長560%為全體最高，但法人持續大賣，基本面復甦尚未反映在股價。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -2,337,200 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>外资卖超1336萬張，投信卖超137萬張，法人賣超1477萬張。營收成長560%為全體最高，但法人持續大賣，基本面復甦尚未反映在股價。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>營收成長560%全體最高顯示記憶體景氣回升，DRAM需求回暖，技術升級</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超1477萬張（外资1336萬張），EPS 2.13元偏低，記憶體價格波動大，廠商擴產加劇供需失衡</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🟠留意">
-        <div class="stock-header">
-            <span class="stock-code">8299</span>
-            <span class="stock-name">群聯</span>
-            <span class="rating-badge" style="background: #F8510F;">🟠留意</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">2880.0</span>
-            <span class="change" style="color: #3fb950;">+260.0 (+9.92%)</span>
-        </div><div class="indicators">MA5: ▲2665.0 | MA20: ▲2082.75 | RSI: 83.1 (過熱)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>群聯EPS 21.74元優秀，但法人賣超2246萬張，為記憶體相關股中最高。三大法人全面卖超顯示專業資金對後市有明顯疑慮，可能是對記憶體景氣反覆或競爭壓力擔憂。短線法人賣壓沉重，建議謹慎。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超2246萬張（外资1539萬張、投信413萬張）為記憶體相關股最高，三大法人全數賣超。EPS 21.74元優秀，但法人無視基本面大賣，顯示對後市有疑慮。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p>暂无法人资料</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超2246萬張（外资1539萬張、投信413萬張）為記憶體相關股最高，三大法人全數賣超。EPS 21.74元優秀，但法人無視基本面大賣，顯示對後市有疑慮。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>EPS 21.74元展現優異獲利，NAND控制晶片龍頭，AI邊緣運算需求長期看好</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超2246萬張（三大法人全數賣超），外资1539萬張，投信413萬張為異常，記憶體景氣不確定性高</p>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+<h2>2317 鴻海 <span class="rating-green">🟢</span></h2>
 
-        <div class="rating-section" data-rating="🔴風險">
-        <h2 style="color: #F85149; margin: 2rem 0 1rem;">🔴風險</h2>
+<h3>📊 產業分析</h3>
+<p>AI伺服器組裝龍頭，電動車/雲端同步</p>
 
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">2207</span>
-            <span class="stock-name">和泰車</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">468.5</span>
-            <span class="change" style="color: #f85149;">-5.0 (-1.06%)</span>
-        </div><div class="indicators">MA5: ▼474.9 | MA20: ▼489.3 | RSI: 27.7 (超賣)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>和泰車基本面具備數據全為N/A，包含股價、EPS、PE、ROE、營收成長等關鍵指標均缺失，無法進行有效評估。法人賣超12.6萬張，基本面風險極高，建議回避。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>股價/EPS/PE/ROE/營收成長全為N/A，基本面數據嚴重缺失。法人賣超12.6萬張，數據不足難以評估，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -25,888 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>股價/EPS/PE/ROE/營收成長全為N/A，基本面數據嚴重缺失。法人賣超12.6萬張，數據不足難以評估，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>豐田台灣獨家代理，品牌資源穩固</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>基本面具備數據嚴重缺失（N/A），法人賣超12.6萬張，無法有效評估，財務透明度不足</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">2002</span>
-            <span class="stock-name">中鋼</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">18.3</span>
-            <span class="change" style="color: #f85149;">-0.1 (-0.54%)</span>
-        </div><div class="indicators">MA5: ▼18.51 | MA20: ▼19.0 | RSI: 27.0 (超賣)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>中鋼為本次分析中法人賣超最沈重的個股，法人賣超2916萬張、外資賣超2857萬張均為全體最高，顯示專業法人幾乎全面拋售。EPS -0.29元虧損，鋼鐵業景氣持續低迷，基本面與資金面雙雙惡化，風險極高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超2916萬張為全體最高，外資賣超2857萬張亦為最高，EPS -0.29元虧損。鋼鐵業景氣低迷，法人幾乎全面拋售，風險極高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -19,798,278 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超2916萬張為全體最高，外資賣超2857萬張亦為最高，EPS -0.29元虧損。鋼鐵業景氣低迷，法人幾乎全面拋售，風險極高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>鋼鐵業龍頭，擁有產能規模優勢，政策支持基礎建設需求</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超2916萬張（全體最高），外资卖超2857萬張（全體最高），EPS -0.29元虧損，鋼鐵景氣低迷</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">1301</span>
-            <span class="stock-name">台塑</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">46.1</span>
-            <span class="change" style="color: #f85149;">-0.8 (-1.71%)</span>
-        </div><div class="indicators">MA5: ▼47.69 | MA20: ▼50.5 | RSI: 25.7 (超賣)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>台塑法人賣超378萬張，顯示法人持續減持。EPS -1.58元虧損，基本面惡化。石化業景氣低迷，加上原料價格波動與結構性產能過剩問題，短期難有起色，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超378萬張，外資與投信均大賣，EPS -1.58元虧損。石化業景氣低迷，基本面與法人態度同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -5,465,368 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超378萬張，外資與投信均大賣，EPS -1.58元虧損。石化業景氣低迷，基本面與法人態度同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>石化龍頭，垂直整合優勢，禁塑令趨勢下PVC需求長期穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超378萬張，EPS -1.58元虧損，石化景氣低迷，原料價格波動大，結構性產能過剩</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">4743</span>
-            <span class="stock-name">合一</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">52.0</span>
-            <span class="change" style="color: #3fb950;">+1.3 (+2.56%)</span>
-        </div><div class="indicators">MA5: ▲51.36 | MA20: ▼52.67 | RSI: 51.9 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>合一EPS -2.18元虧損，基本面弱勢明顯。雖然法人買超6萬張，但規模小無法支撐股價。生物製藥公司營收，依賴單一產品或新藥進展，風險極高，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人買超6萬張規模小，但EPS -2.18元虧損，無法支撐股價。法人買超能否持續是關鍵，基本面弱勢，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p>暂无法人资料</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人買超6萬張規模小，但EPS -2.18元虧損，無法支撐股價。法人買超能否持續是關鍵，基本面弱勢，建議避開。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>生物相似藥布局，少數制劑產品已上市，潛在新藥題材</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>EPS -2.18元虧損，法人買超規模小（6萬張），新藥研發費用高，藥證取得時程不确定</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">2734</span>
-            <span class="stock-name">晶華</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">15.55</span>
-            <span class="change" style="color: #f85149;">-0.05 (-0.32%)</span>
-        </div><div class="indicators">MA5: ▼15.64 | MA20: ▼16.43 | RSI: 13.2 (超賣)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>晶華EPS -1.42元虧損，基本面明顯惡化。法人賣超32萬張顯示專業法人偏空。飯店業受景氣影響大，租金人事成本高，基本面與資金面同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超32萬張，EPS -1.42元虧損，飯店業受景氣影響大，基本面與法人態度同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p>暂无法人资料</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超32萬張，EPS -1.42元虧損，飯店業受景氣影響大，基本面與法人態度同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>五星級飯店龍頭，品牌資源穩固，觀光業復甦潛在受益</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超32萬張，EPS -1.42元虧損，觀光餐飲業景氣波動大，入住率波動，租金與人事成本高</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="stock-card" data-rating="🔴風險">
-        <div class="stock-header">
-            <span class="stock-code">1909</span>
-            <span class="stock-name">永豐餘</span>
-            <span class="rating-badge" style="background: #F85149;">🔴風險</span>
-        </div>
-        
-        <div class="price-info">
-            <span class="price">8.95</span>
-            <span class="change" style="color: #f85149;">-0.16 (-1.76%)</span>
-        </div><div class="indicators">MA5: ▼9.14 | MA20: ▼9.21 | RSI: 39.8 (正常)</div>
-        
-        <div class="stock-section">
-            <h3>📊 產業分析</h3>
-            <p>永豐餘EPS -0.39元虧損，顯示本業困境。法人賣超121萬張，外資118萬張為主要賣方。造紙業景氣持續低迷，紙價波動加上環保成本壓力，基本面與資金面同步惡化，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📰 消息面</h3>
-            <p>法人賣超121萬張，外資幾乎全數賣出（118萬張），EPS -0.39元虧損。造紙業景氣低迷，法人幾乎全面拋售，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>📈 法人動態</h3>
-            <p><span style="color:#F85149;font-weight:bold;">三大法人 -411,000 股</span></p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>💡 投資建議</h3>
-            <p>法人賣超121萬張，外資幾乎全數賣出（118萬張），EPS -0.39元虧損。造紙業景氣低迷，法人幾乎全面拋售，風險高。</p>
-        </div>
-        
-        <div class="stock-section">
-            <h3>🔍 評估依據</h3>
-            <div class="strengths-risks">
-                <div class="strengths">
-                    <h4>優勢</h4>
-                    <p>造紙龍頭之一，多元事業涵蓋電子/化工，本業現金流穩定</p>
-                </div>
-                <div class="risks">
-                    <h4>風險</h4>
-                    <p>法人賣超121萬張，EPS -0.39元虧損，造紙景氣低迷，紙價波動，環保成本壓力大</p>
-                </div>
-            </div>
-        </div>
-    </div>
-            </div>
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣21537012張、投信賣0張、自營商賣0張</p>
 
-        <div class="footer">
-            <p>本報告僅供參考，不構成投資建議。投資有風險，請審慎評估。</p>
-        </div>
-    </div>
-    
-    <script>
-        // 評等過濾功能
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const stockCards = document.querySelectorAll('.stock-card');
-        const ratingSections = document.querySelectorAll('.rating-section');
-        
-        filterBtns.forEach(btn => {{
-            btn.addEventListener('click', () => {{
-                // 移除所有 active
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // 添加 active 到點擊的按鈕
-                btn.classList.add('active');
-                
-                const filter = btn.dataset.filter;
-                
-                // 過濾股票卡片
-                stockCards.forEach(card => {{
-                    if (filter === 'all') {{
-                        card.classList.remove('hidden');
-                    }} else {{
-                        if (card.dataset.rating === filter) {{
-                            card.classList.remove('hidden');
-                        }} else {{
-                            card.classList.add('hidden');
-                        }}
-                    }}
-                }});
-                
-                // 過濾評等區塊
-                ratingSections.forEach(section => {{
-                    if (filter === 'all') {{
-                        section.style.display = 'block';
-                    }} else {{
-                        if (section.dataset.rating === filter) {{
-                            section.style.display = 'block';
-                        }} else {{
-                            section.style.display = 'none';
-                        }}
-                    }}
-                }});
-            }});
-        }});
-    </script>
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=11.3%、營收成長=22.3%、法人買超8000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=18.5、ROE=11.3%、營收成長=22.3%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2303 聯電 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>成熟製程晶圓代工，景氣循環</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買24455026張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=12.5%、法人買超11463000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=27.9、ROE=12.5%、營收成長=5.5%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2308 台達電 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>電源/風扇/自動化，全球龍頭</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買768418張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=24.3%、營收成長=34.0%、法人買超72988張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=90.0、ROE=24.3%、營收成長=34.0%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2382 廣達 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>AI伺服器/雲端筆電組裝</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣3000577張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=31.2%、營收成長=53.0%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=16.2、ROE=31.2%、營收成長=53.0%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2345 智邦 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>網通設備，雲端交換器</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買2982166張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=56.1%、營收成長=64.0%、法人買超830000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=53.5、ROE=56.1%、營收成長=64.0%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2454 聯發科 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>手機/AI ASIC晶片，旗艦產品</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣263281張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=25.4%、法人買超76000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=49.3、ROE=25.4%、營收成長=-2.7%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2376 技嘉 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>顯示卡/伺服器MB</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買1099134張、投信買115000張、自營商買7000張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=22.9%、營收成長=36.2%、法人買超256934張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=19.0、ROE=22.9%、營收成長=36.2%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>3022 威盛 <span class="rating-blue">🔵</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>IC設計/處理器，布局AI</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買68037張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🔵 成長潛力｜</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=14.6、ROE=7.3%、營收成長=-4.8%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>6230 超微 <span class="rating-orange">🟠</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>高效能運算/HPC</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣60000張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟠 留意｜</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=N/A、ROE=-3.8%、營收成長=8.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>6257 矽力 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>電源管理IC，雲端/AI</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣955990張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=13.9%、法人買超107000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=35.7、ROE=13.9%、營收成長=7.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>1513 中興電 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>重電/綠能電網受益</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣1502285張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=19.9%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=18.6、ROE=19.9%、營收成長=2.2%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2542 興富發 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>營建資產營收</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買2698668張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜營收成長=36.9%、法人買超18000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=20.8、ROE=8.7%、營收成長=36.9%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2603 長榮 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>貨櫃航運龍頭</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買3352656張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=11.8%、法人買超11000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=6.3、ROE=11.8%、營收成長=-26.0%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2609 陽明 <span class="rating-blue">🔵</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>航運景氣</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣7916416張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🔵 成長潛力｜法人買超30000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=9.8、ROE=3.2%、營收成長=-15.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2618 東和 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>散裝航運</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買3924678張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=22.4%、法人買超24000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=7.2、ROE=22.4%、營收成長=10.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2881 富邦金 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>金控大型股</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買7182802張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=12.3%、營收成長=24.0%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=11.5、ROE=12.3%、營收成長=24.0%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>2891 中信金 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>銀行保險為主</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買13915780張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=15.5%、營收成長=43.3%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=13.5、ROE=15.5%、營收成長=43.3%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>5871 中租-KY <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>租賃龍頭，利率敏感</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣1085633張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=10.6%、法人買超7000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=9.4、ROE=10.6%、營收成長=0.3%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>6415 矽力-KY <span class="rating-yellow">🟡</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>雲端電源管理IC</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資買1156945張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟡 觀望｜法人買超315000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=74.4、ROE=6.9%、營收成長=5.5%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>4958 臻鼎-KY <span class="rating-yellow">🟡</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>PCB軟板，蘋果供應鏈</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣11051098張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟡 觀望｜法人買超841000張</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=59.2、ROE=7.1%、營收成長=1.6%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>6667 信紘科 <span class="rating-green">🟢</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>台積電廠務供應商</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：無資料</p>
+
+<h3>💡 投資建議</h3>
+<p>🟢 建議持有｜ROE=28.2%、營收成長=61.1%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=18.2、ROE=28.2%、營收成長=61.1%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>6613 朋億 <span class="rating-blue">🔵</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>半導體設備廠</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：無資料</p>
+
+<h3>💡 投資建議</h3>
+<p>🔵 成長潛力｜ROE=19.2%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=19.0、ROE=19.2%、營收成長=-11.3%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+<h2>3653 合一 <span class="rating-yellow">🟡</span></h2>
+
+<h3>📊 產業分析</h3>
+<p>新藥研發，生技</p>
+
+<h3>📰 消息面</h3>
+<p>法人動向：外資賣165315張、投信賣0張、自營商賣0張</p>
+
+<h3>💡 投資建議</h3>
+<p>🟡 觀望｜ROE=30.2%</p>
+
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>PE=96.2、ROE=30.2%、營收成長=11.6%</p>
+<h4>風險</h4>
+<p>注意評價水位與產業趨勢</p>
+<hr/>
+
+
+<div class="footer">
+<p>本報告由 Hermes Agent 自動生成 | 2026-05-14</p>
+</div>
+
+<script>
+function filterRating(r) {
+  var rows = document.querySelectorAll('#stock-table tr.row-' + r);
+  var all = document.querySelectorAll('#stock-table tbody tr, #stock-table tr');
+  document.querySelectorAll('#stock-table tr').forEach(function(tr) {
+    if (tr.classList.contains('row-' + r)) tr.style.display = '';
+    else if (!tr.querySelector('th')) tr.style.display = 'none';
+  });
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+}
+function filterAll() {
+  document.querySelectorAll('#stock-table tr').forEach(function(tr) { tr.style.display = ''; });
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelector('.filter-btn').classList.add('active');
+}
+</script>
 </body>
 </html>
