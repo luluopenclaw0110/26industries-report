@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>26檔產業龍頭分析 2026-06-05</title>
+<title>27檔產業龍頭分析 2026-06-05</title>
 <style>
 body { font-family: 'Segoe UI', Arial, sans-serif; margin: 40px; background: #0d1117; color: #e6edf3; }
 h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
@@ -45,9 +45,9 @@ tr:nth-child(even) { background: #161b22; }
 <h2>📋 評等總覽</h2>
 <p>
 <button class="filter-btn active" onclick="filterAll()">全部</button>
-<button class="filter-btn" onclick="filterRating('green')">🟢建議持有 (10)</button>
+<button class="filter-btn" onclick="filterRating('green')">🟢建議持有 (11)</button>
 <button class="filter-btn" onclick="filterRating('blue')">🔵成長潛力 (6)</button>
-<button class="filter-btn" onclick="filterRating('yellow')">🟡觀望 (8)</button>
+<button class="filter-btn" onclick="filterRating('yellow')">🟡觀望 (7)</button>
 <button class="filter-btn" onclick="filterRating('orange')">🟠留意 (1)</button>
 <button class="filter-btn" onclick="filterRating('red')">🔴風險 (0)</button>
 </p>
@@ -96,17 +96,6 @@ tr:nth-child(even) { background: #161b22; }
 <td class="positive">+66.6%</td>
 <td class="positive">+1,107,695</td>
 <td>ROE=36.8% / 營收+66.6% / PE=20.7 / 法人買超</td>
-</tr>
-<tr class="row-yellow觀望">
-<td><strong>1514</strong></td><td>亞力</td>
-<td><span class="rating-badge-yellow">🟡</span></td>
-<td class="price">$135</td>
-<td class="pe positive">41.8</td>
-<td>3.23</td>
-<td class="positive">14.8%</td>
-<td class="positive">+20.6%</td>
-<td class="positive">+1,150,732</td>
-<td>ROE=14.8% / 營收+20.6% / PE=41.8 / 法人買超</td>
 </tr>
 <tr class="row-green建議持有">
 <td><strong>2618</strong></td><td>中興電</td>
@@ -184,6 +173,17 @@ tr:nth-child(even) { background: #161b22; }
 <td class="positive">+13.0%</td>
 <td class="positive">+1,859,662</td>
 <td>ROE=15.2% / 營收+13.0% / PE=36.6 / 法人買超</td>
+</tr>
+<tr class="row-green建議持有">
+<td><strong>1514</strong></td><td>亞力</td>
+<td><span class="rating-badge-green">🟢</span></td>
+<td class="price">$135</td>
+<td class="pe neutral">41.8</td>
+<td>3.23</td>
+<td class="positive">14.8%</td>
+<td class="positive">+20.6%</td>
+<td class="positive">+1,150,732</td>
+<td>ROE=14.8% / 營收+20.6% / 盈餘+31.1% / 法人買超</td>
 </tr>
 <tr class="row-blue成長潛力">
 <td><strong>1513</strong></td><td>中興電</td>
@@ -416,28 +416,6 @@ tr:nth-child(even) { background: #161b22; }
 <hr style="border-color:#30363d">
 <div class="stock-card">
 <div class="stock-header">
-<h2>1514 亞力 <span class="rating-badge-yellow">🟡</span></h2>
-<span>股價: <strong>$135</strong></span>
-</div>
-<h3>📊 產業分析</h3>
-<p><strong>產業：重電/電力設備</strong></p>
-<p>台灣重電設備大廠，受惠台電強韌電網計畫、綠能建設與半導體廠擴廠需求</p>
-<h3>📰 消息面</h3>
-<p>法人動態：三大法人買超 1,150,732 股，法人偏多</p>
-<h3>💡 投資建議</h3>
-<p>🟡觀望 — 動能強勁但PE偏高，建議分批進場</p>
-<h3>🔍 評估依據</h3>
-<h4>優勢</h4>
-<p>•  股價：$135  •  PE：41.8  •  EPS：3.23  •  ROE：14.8%  •  營收成長：+20.6%</p>
-<p>ROE=14.8% / 營收+20.6% / PE=41.8 / 法人買超</p>
-<p>YTD: +35.7% / 近1年: +30.2%</p>
-<h4>風險</h4>
-<p>注意PE 41.8偏高、本益比反應樂觀預期、原物料成本波動等風險</p>
-</div>
-
-<hr style="border-color:#30363d">
-<div class="stock-card">
-<div class="stock-header">
 <h2>2618 中興電 <span class="rating-badge-green">🟢</span></h2>
 <span>股價: <strong>$38</strong></span>
 </div>
@@ -580,6 +558,28 @@ tr:nth-child(even) { background: #161b22; }
 <p>ROE=15.2% / 營收+13.0% / PE=36.6 / 法人買超</p>
 <h4>風險</h4>
 <p>注意PE是否偏高、營收是否下滑、產業景氣循環等風險</p>
+</div>
+
+<hr style="border-color:#30363d">
+<div class="stock-card">
+<div class="stock-header">
+<h2>1514 亞力 <span class="rating-badge-green">🟢</span></h2>
+<span>股價: <strong>$135</strong></span>
+</div>
+<h3>📊 產業分析</h3>
+<p><strong>產業：重電/電力設備</strong></p>
+<p>台灣重電指標股，主力產品為變壓器、UPS不斷電系統、通訊整流器、太陽能變流器、電池充電器。AI 資料中心建置帶動電力設備需求，電網升級趨勢明確。</p>
+<h3>📰 消息面</h3>
+<p>法人動態：三大法人買超 1,150,732 張，法人強烈偏多</p>
+<p>近5個月股價從 $94 飆漲至 $149，6/4 創52週新高，5/6-6/5 區間漲幅逾 55%，市場資金追捧 AI 電力受惠題材。</p>
+<h3>💡 投資建議</h3>
+<p>🟢建議持有 — 法人大量買超 + 營收/盈餘雙位數成長，動能強勁</p>
+<h3>🔍 評估依據</h3>
+<h4>優勢</h4>
+<p>•  股價：$135  •  PE：41.8  •  EPS：3.23  •  ROE：14.8%  •  營收成長：+20.6%  •  盈餘成長：+31.1%</p>
+<p>ROE=14.8% / 營收+20.6% / 盈餘+31.1% / 法人買超 1,150,732 張</p>
+<h4>風險</h4>
+<p>PE 41.8 偏高，股價已逼近 52 週高點 $148，需留意短線過熱與回檔風險；重電族群與原物料（銅、矽鋼片）價格連動，景氣循環波動較大。</p>
 </div>
 
 <hr style="border-color:#30363d">
